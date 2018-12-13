@@ -1,6 +1,6 @@
 const uuid = require('uuid/v4');
 const pets = require('../data');
-const {deepCopy, addIdPushAndReturn}=require('../helper');
+const { deepCopy, addIdPushAndReturn }=require('../helper');
 
 class PetService{
     constructor(sentPets) {
@@ -30,13 +30,12 @@ class PetService{
         return Object.assign(element, body);
     };
     async getAllExaminations () {
-        return this.pets.filter((el)=> el.examinations).map((el) => ({petId: el.id, examinations: el.examinations}));
+        return this.pets.filter((el)=> el.examinations).map((el) => ( el.examinations));
 
     };
     async getOneExamination  (petId, examId)  {
-        const pet = this.pets.find((el) => el.id === +petId);
-        const examinations = pet.examinations;
-        return examinations.find((el) => el.id === +examId);
+        const pet = this.pets.find((el) => el.id === +petId).examinations;
+        return pet.find((el) => el.id === +examId);
     };
     async deleteExamination (petId, examId){
         const pet = this.pets.find((el)=> el.id === +petId);

@@ -7,9 +7,9 @@ const deepCopy = (toCopy) => {
 
 module.exports.deepCopy = deepCopy;
 
-module.exports.addIdPushAndReturn = (obj,object)=>{
+module.exports.addIdPushAndReturn = (obj,pets)=>{
     const copy = deepCopy(obj);
     copy.id = uuid;
-    object.push(copy);
+    pets.push(copy);
     return copy;
 };

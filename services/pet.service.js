@@ -15,8 +15,6 @@ class PetService{
     async deletePet (petsId){
         const index = this.pets.findIndex((el)=> el.id === +petsId);
 
-        console.log(index);
-
         if (index > -1){
             const [deleted] = this.pets.splice(index, 1);
             return deleted
@@ -53,10 +51,13 @@ class PetService{
             return element;
         }
     };
-    async updateExamination  (petId, body)  {
-        const pet = this.pets.find((el)=> el.id === +petId);
-        const examination = pet.examinations.find((el) => el.id === +examId);
-        return Object.assign(examination, body);
+    async updateExamination  (petId, examId, body)  {
+        const pet = pets.find((el) => el.id === petId);
+        if(pet.examinations) {
+
+            const examination = pet.examinations.find((el) => el.id === +examId);
+            return Object.assign(examination, body);
+        }
     };
 }
 module.exports = {

@@ -31,7 +31,9 @@ class PetController {
     };
     async addPet  (req,res) {
         const element = req.body;
-        const nesto = await this.petService.addPet(element);
+        const nesto = await this
+            .petService
+            .addPet(element);
         if(!nesto){
             res.status(400).json("Err")
         }
@@ -83,8 +85,9 @@ class PetController {
     };
     async updateExamination  (req, res)  {
         const petId = req.params.petId;
+        const examId = req.params.eid;
         const element = req.body;
-        const nesto  = await petService.updateExamination(petId, element);
+        const nesto  = await petService.updateExamination(petId, examId, element);
         res.status(200).json(nesto);
     };
 }

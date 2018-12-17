@@ -21,7 +21,9 @@ class PetService{
         }
     };
     async addPet (element) {
-        return addIdPushAndReturn(element, this.pets);
+        const Petss =addIdPushAndReturn(element, this.pets);
+        Petss.id = uuid();
+        return Petss;
     };
     async updatePet (petsId, body)  {
         const element = this.pets.find((el) => el.id === +petsId);
@@ -52,9 +54,8 @@ class PetService{
         }
     };
     async updateExamination  (petId, examId, body)  {
-        const pet = pets.find((el) => el.id === petId);
+        const pet = pets.find((el) => el.id === +petId);
         if(pet.examinations) {
-
             const examination = pet.examinations.find((el) => el.id === +examId);
             return Object.assign(examination, body);
         }

@@ -19,5 +19,8 @@ app.post('/pets/:petId/examinations',petController.addExamination);
 app.put('/pets/:petId/examinations/:eid', petController.updateExamination);
 
 
+if (process.env.NODE_ENV !== 'test') {
+    app.listen(3000, () => console.log('server started on 3000'));
+}
 
-app.listen(3000, () => console.log('server is listening'));
+module.exports = app;

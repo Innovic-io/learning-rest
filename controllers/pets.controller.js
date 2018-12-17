@@ -12,7 +12,7 @@ class PetController {
             res.status(400).json({"error" : 'Pet does not exist'})
         }
         else {
-            res.status(200).json({response: element});
+            res.status(200).json(element);
         }
     };
     async getAllPets (req,res) {
@@ -31,9 +31,7 @@ class PetController {
     };
     async addPet  (req,res) {
         const element = req.body;
-        const nesto = await this
-            .petService
-            .addPet(element);
+        const nesto = await petService.addPet(element);
         if(!nesto){
             res.status(400).json("Err")
         }
@@ -85,6 +83,7 @@ class PetController {
     };
     async updateExamination  (req, res)  {
         const petId = req.params.petId;
+        console.log(petId)
         const examId = req.params.eid;
         const element = req.body;
         const nesto  = await petService.updateExamination(petId, examId, element);

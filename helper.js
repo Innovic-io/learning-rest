@@ -9,7 +9,7 @@ module.exports.deepCopy = deepCopy;
 
 module.exports.addIdPushAndReturn = (obj,pets)=>{
     const copy = deepCopy(obj);
-    copy.id = uuid;
+    copy.id = uuid();
     pets.push(copy);
     return copy;
 };
